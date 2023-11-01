@@ -1,0 +1,16 @@
+{
+  "name": "rescript-ffi",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "bsc-flags": ["-w -33-44-8", "-open RescriptCore"],
+  "bs-dependencies": ["@rescript/core", "@rescript/react"],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "jsx": { "version": 4 }
+}
