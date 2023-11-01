@@ -13,12 +13,36 @@ var $$delete = ((headers, name) => headers.delete(name));
 
 var get = ((headers, name) => headers.get(name) ?? undefined);
 
+var has = ((headers, name) => headers.has(name));
+
+var set = ((headers, name, value) => headers.set(name, value));
+
+var entries = (headers => headers.entries());
+
+var keys = (headers => headers.keys());
+
+var values = (headers => headers.values());
+
+var forEach = ((headers, callback) => headers.forEach(callback));
+
+var toJSON = (headers => headers.toJSON());
+
+var count = (headers => headers.count);
+
 var $$Headers = {
   make: make,
   makeWithInit: makeWithInit,
   append: append,
   $$delete: $$delete,
-  get: get
+  get: get,
+  has: has,
+  set: set,
+  entries: entries,
+  keys: keys,
+  values: values,
+  forEach: forEach,
+  toJSON: toJSON,
+  count: count
 };
 
 var headers = make();

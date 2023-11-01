@@ -24,12 +24,12 @@ module Headers = {
   let delete: (t, string) => unit = %ffi(`(headers, name) => headers.delete(name)`)
 
   let get: (t, string) => option<string> = %ffi(`(headers, name) => headers.get(name) ?? undefined`)
-  @send external has: (t, string) => bool = "has"
-  @send external set: (t, string, string) => unit = "set"
-  @send external entries: t => Iterator.t<(string, string)> = "entries"
-  @send external keys: t => Iterator.t<string> = "keys"
-  @send external values: t => Iterator.t<string> = "values"
-  @send external forEach: (t, (string, string, t) => unit) => unit = "forEach"
+  let has: (t, string) => bool = %ffi(`(headers, name) => headers.has(name)`)
+  let set: (t, string, string) => unit = %ffi(`(headers, name, value) => headers.set(name, value)`)
+  let entries: t => Iterator.t<(string, string)> = %ffi(`headers => headers.entries()`)
+  let keys: t => Iterator.t<string> = %ffi(`headers => headers.keys()`)
+  let values: t => Iterator.t<string> = %ffi(`headers => headers.values()`)
+  let forEach: (t, (string, string, t) => unit) => unit = %ffi(`(headers, callback) => headers.forEach(callback)`)
 
   /**
    * Convert {@link Headers} to a plain JavaScript object.
@@ -40,15 +40,13 @@ module Headers = {
    *
    * Does not preserve insertion order. Well-known header names are lowercased. Other header names are left as-is.
    */
-  @send
-  external toJSON: t => Dict.t<string> = "toJSON"
+  let toJSON: t => Dict.t<string> = %ffi(`headers => headers.toJSON()`)
 
   /**
    * Get the total number of headers
    */
-  @get
-  external count: t => int = "count"
-
+  let count: t => int = %ffi(`headers => headers.count`)
+ 
   /**
    * Get all headers matching "Set-Cookie"
    *
