@@ -17,7 +17,7 @@ module HeadersInit = {
 module Headers = {
   type t
 
-  @new external make: unit => t = "Headers"
+  let make : unit => t = %ffi(`()=> new Headers()`)
   @new external makeWithInit: HeadersInit.t => t = "Headers"
 
   @send external append: (t, string, string) => unit = "append"

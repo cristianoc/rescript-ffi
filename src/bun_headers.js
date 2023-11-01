@@ -3,9 +3,13 @@
 
 var HeadersInit = {};
 
-var $$Headers = {};
+var make = (()=> new Headers());
 
-var headers = new Headers();
+var $$Headers = {
+  make: make
+};
+
+var headers = make();
 
 var Test = {
   headers: headers
