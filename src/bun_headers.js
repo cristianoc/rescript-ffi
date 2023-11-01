@@ -29,6 +29,8 @@ var toJSON = (headers => headers.toJSON());
 
 var count = (headers => headers.count);
 
+var getAllCookies = (headers => headers.getAll("Set-Cookie"));
+
 var $$Headers = {
   make: make,
   makeWithInit: makeWithInit,
@@ -42,7 +44,8 @@ var $$Headers = {
   values: values,
   forEach: forEach,
   toJSON: toJSON,
-  count: count
+  count: count,
+  getAllCookies: getAllCookies
 };
 
 var headers = make();
@@ -51,7 +54,7 @@ append(headers, "Set-Cookie", "foo=bar");
 
 var cookie = get(headers, "Set-Cookie");
 
-var cookies = headers.getAll("Set-Cookie");
+var cookies = getAllCookies(headers);
 
 var Test = {
   headers: headers,

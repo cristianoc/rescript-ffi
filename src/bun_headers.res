@@ -62,8 +62,7 @@ module Headers = {
    * let cookies = headers->Headers.getAllCookies // ["foo=bar", "baz=qux"]
    * ```
    */
-  @send
-  external getAllCookies: (t, @as("Set-Cookie") _) => array<string> = "getAll"
+  let getAllCookies: t => array<string> = %ffi(`headers => headers.getAll("Set-Cookie")`)
 }
 
 module Test = {
