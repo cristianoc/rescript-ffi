@@ -5,8 +5,15 @@ var HeadersInit = {};
 
 var $$Headers = {};
 
+var headers = new Headers();
+
+var Test = {
+  headers: headers
+};
+
 export {
   HeadersInit ,
   $$Headers ,
+  Test ,
 }
-/* No side effect */
+/* headers Not a pure module */

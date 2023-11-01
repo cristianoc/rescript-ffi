@@ -66,3 +66,7 @@ module Headers = {
   @send
   external getAllCookies: (t, @as("Set-Cookie") _) => array<string> = "getAll"
 }
+
+module Test = {
+  let headers = Headers.make()
+}
