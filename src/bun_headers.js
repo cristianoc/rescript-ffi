@@ -7,14 +7,17 @@ var make = (()=> new Headers());
 
 var makeWithInit = (init => new Headers(init));
 
+var append = ((headers, name, value) => headers.append(name, value));
+
 var $$Headers = {
   make: make,
-  makeWithInit: makeWithInit
+  makeWithInit: makeWithInit,
+  append: append
 };
 
 var headers = make();
 
-headers.append("Set-Cookie", "foo=bar");
+append(headers, "Set-Cookie", "foo=bar");
 
 var Test = {
   headers: headers

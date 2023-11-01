@@ -20,7 +20,7 @@ module Headers = {
   let make : unit => t = %ffi(`()=> new Headers()`)
   let makeWithInit: HeadersInit.t => t = %ffi(`init => new Headers(init)`)
 
-  @send external append: (t, string, string) => unit = "append"
+  let append: (t, string, string) => unit = %ffi(`(headers, name, value) => headers.append(name, value)`)
   @send external delete: (t, string) => unit = "delete"
   @return(nullable) @send external get: (t, string) => option<string> = "get"
   @send external has: (t, string) => bool = "has"
