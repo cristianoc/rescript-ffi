@@ -23,7 +23,7 @@ module Headers = {
   let append: (t, string, string) => unit = %ffi(`(headers, name, value) => headers.append(name, value)`)
   let delete: (t, string) => unit = %ffi(`(headers, name) => headers.delete(name)`)
 
-  let get: (t, string) => option<string> = %ffi(`(headers, name) => headers.get(name) || undefined`)
+  let get: (t, string) => option<string> = %ffi(`(headers, name) => headers.get(name) ?? undefined`)
   @send external has: (t, string) => bool = "has"
   @send external set: (t, string, string) => unit = "set"
   @send external entries: t => Iterator.t<(string, string)> = "entries"

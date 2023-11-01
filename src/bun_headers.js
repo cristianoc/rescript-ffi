@@ -11,7 +11,7 @@ var append = ((headers, name, value) => headers.append(name, value));
 
 var $$delete = ((headers, name) => headers.delete(name));
 
-var get = ((headers, name) => headers.get(name) || undefined);
+var get = ((headers, name) => headers.get(name) ?? undefined);
 
 var $$Headers = {
   make: make,
