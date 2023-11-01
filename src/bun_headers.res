@@ -70,4 +70,5 @@ module Test = {
   let headers = Headers.make()
   headers->Headers.append("Set-Cookie", "foo=bar")
   let cookie = headers->Headers.get("Set-Cookie")
+  let cookies = headers->Headers.getAllCookies
 }

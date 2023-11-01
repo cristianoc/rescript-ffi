@@ -51,9 +51,12 @@ append(headers, "Set-Cookie", "foo=bar");
 
 var cookie = get(headers, "Set-Cookie");
 
+var cookies = headers.getAll("Set-Cookie");
+
 var Test = {
   headers: headers,
-  cookie: cookie
+  cookie: cookie,
+  cookies: cookies
 };
 
 export {
