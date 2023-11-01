@@ -9,10 +9,13 @@ var makeWithInit = (init => new Headers(init));
 
 var append = ((headers, name, value) => headers.append(name, value));
 
+var $$delete = ((headers, name) => headers.delete(name));
+
 var $$Headers = {
   make: make,
   makeWithInit: makeWithInit,
-  append: append
+  append: append,
+  $$delete: $$delete
 };
 
 var headers = make();
