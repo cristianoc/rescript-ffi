@@ -18,7 +18,7 @@ module Headers = {
   type t
 
   let make : unit => t = %ffi(`()=> new Headers()`)
-  @new external makeWithInit: HeadersInit.t => t = "Headers"
+  let makeWithInit: HeadersInit.t => t = %ffi(`init => new Headers(init)`)
 
   @send external append: (t, string, string) => unit = "append"
   @send external delete: (t, string) => unit = "delete"
@@ -69,4 +69,5 @@ module Headers = {
 
 module Test = {
   let headers = Headers.make()
+  headers->Headers.append("Set-Cookie", "foo=bar")
 }

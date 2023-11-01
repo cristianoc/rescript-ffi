@@ -5,11 +5,16 @@ var HeadersInit = {};
 
 var make = (()=> new Headers());
 
+var makeWithInit = (init => new Headers(init));
+
 var $$Headers = {
-  make: make
+  make: make,
+  makeWithInit: makeWithInit
 };
 
 var headers = make();
+
+headers.append("Set-Cookie", "foo=bar");
 
 var Test = {
   headers: headers
